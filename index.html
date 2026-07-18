@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <audio src="/images/videoplayback.mp3" autoplay></audio>
+    <audio id="bgAudio" src="images/videoplayback.mp3" autoplay loop></audio>
     <div class="container">
       <main class="content">
         <div class="content-main">
@@ -594,6 +594,8 @@
     <script src="js/script.js" type="text/javascript"></script>
 
     <script>
+      document.getElementById("bgAudio").volume = 0.4;
+      
       if ("scrollRestoration" in history) {
         history.scrollRestoration = "manual";
       }
