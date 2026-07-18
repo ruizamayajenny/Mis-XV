@@ -72,11 +72,7 @@ emailjs.send('service_lxy6r4q', 'template_886tl1s', templateParams).then(
 // Abre el modal al cargar la página
 window.onload = function() {
   const modal = document.getElementById("mi-modal");
-  modal.showModal();
-
-  const audio = document.getElementById("bgAudio");
-  audio.play();
-  
+  modal.showModal(); // Método nativo que abre el modal y bloquea el fondo
   document.body.classList.add('no-scroll');
 };
 
@@ -84,5 +80,12 @@ window.onload = function() {
 function cerrarModal() {
   const modal = document.getElementById("mi-modal");
   modal.close();
+
+  const audio = document.getElementById("bgAudio");
+  audio.volume = 0.3; // por si no lo seteaste ya en otro lado
+  audio.play().catch((err) => {
+    console.log('No se pudo reproducir el audio:', err);
+  });
+
   document.body.classList.remove('no-scroll');
 }
