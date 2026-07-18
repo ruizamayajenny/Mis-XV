@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  /* min-width: 100vh; */
+  overflow-x: hidden;
   background: linear-gradient(180deg, rgb(233, 30, 99), rgb(255, 201, 201));
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -789,5 +789,42 @@ dialog::backdrop {
   .header-main {
     background-size: cover;
     background-position: center;
+  }
+}
+
+/* ===== Ajustes responsivos adicionales ===== */
+@media (max-width: 600px) {
+  .div1, .div2, .div3, .div4,
+  .div5, .div6, .div7, .div8,
+  .div13 {
+    font-size: 18px;
+  }
+
+  .header-main .header-content p {
+    font-size: 20px !important;
+  }
+
+  .title-main {
+    margin: 0 1rem 1.5rem 1rem;
+    font-size: 1rem;
+  }
+
+  .invite-card__title {
+    font-size: 1.6rem;
+  }
+
+  .rsvp-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .div1, .div2, .div3, .div4,
+  .div5, .div6, .div7, .div8 {
+    font-size: 15px;
+  }
+
+  .parent {
+    grid-column-gap: 6px;
   }
 }
