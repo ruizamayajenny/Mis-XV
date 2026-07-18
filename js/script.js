@@ -72,7 +72,11 @@ emailjs.send('service_lxy6r4q', 'template_886tl1s', templateParams).then(
 // Abre el modal al cargar la página
 window.onload = function() {
   const modal = document.getElementById("mi-modal");
-  modal.showModal(); // Método nativo que abre el modal y bloquea el fondo
+  modal.showModal();
+
+  const audio = document.getElementById("bgAudio");
+  audio.play();
+  
   document.body.classList.add('no-scroll');
 };
 
