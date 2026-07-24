@@ -9,561 +9,29 @@
       href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap"
       rel="stylesheet"
     />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Playwrite+NZ:wght@100..400&display=swap"
       rel="stylesheet"
     />
 
-    <style>
-      body {
-        margin: 0;
-        font-family: "Playwrite NZ", cursive;
-        font-optical-sizing: auto;
-        font-style: normal;
-      }
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init({
+          publicKey: "BpTkv5qhtbxnC-R1n",
+        });
+      })();
+    </script>
 
-      .content {
-        grid-area: content;
-        z-index: 2;
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-      }
-
-      .header {
-        grid-area: header;
-        position: relative;
-        height: 100vh;
-        overflow: hidden;
-      }
-
-      .footer {
-        grid-area: footer;
-      }
-
-      .wrapper {
-        background-color: #eeeeee;
-        color: #444;
-        margin: auto;
-        display: grid;
-        grid-gap: 1em;
-        grid-template-areas: "header" "content" "footer";
-      }
-
-      .box {
-        background-color: rgb(255, 201, 201);
-        color: #ffffff;
-        border-radius: 5px;
-        font-size: 20px;
-      }
-
-      .img-head {
-        width: 100%;
-        height: 100%;
-        object-fit: fill;
-        object-position: bottom;
-        position: absolute;
-        z-index: 1;
-      }
-
-      .parent {
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        grid-template-rows: repeat(6, 1fr);
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        z-index: 2;
-        color: black;
-      }
-
-      .div1 {
-        grid-area: 1 / 1 / 2 / 7;
-      }
-      .div2 {
-        grid-area: 2 / 1 / 3 / 2;
-      }
-      .div3 {
-        grid-area: 2 / 2 / 3 / 6;
-        text-align: center;
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        font-size: 40px;
-      }
-      .div4 {
-        grid-area: 2 / 6 / 3 / 7;
-      }
-      .div5 {
-        grid-area: 3 / 1 / 5 / 2;
-      }
-      .div6 {
-        grid-area: 3 / 2 / 5 / 6;
-        color: black;
-        text-align: center;
-      }
-      .div7 {
-        grid-area: 3 / 6 / 5 / 7;
-      }
-      .div8 {
-        grid-area: 5 / 1 / 6 / 2;
-      }
-      .div9 {
-        grid-area: 5 / 2 / 6 / 3;
-        text-align: center;
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        font-weight: bold;
-      }
-      .div10 {
-        grid-area: 5 / 3 / 6 / 4;
-        text-align: center;
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        font-weight: bold;
-      }
-      .div11 {
-        grid-area: 5 / 4 / 6 / 5;
-        text-align: center;
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        font-weight: bold;
-      }
-      .div12 {
-        grid-area: 5 / 5 / 6 / 6;
-        text-align: center;
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        font-weight: bold;
-      }
-      .div13 {
-        grid-area: 5 / 6 / 6 / 7;
-      }
-      .div14 {
-        grid-area: 6 / 1 / 7 / 2;
-      }
-      .div15 {
-        grid-area: 6 / 2 / 7 / 3;
-        color: black;
-        text-align: center;
-        font-weight: bold;
-      }
-      .div16 {
-        grid-area: 6 / 3 / 7 / 4;
-        color: black;
-        text-align: center;
-        font-weight: bold;
-      }
-      .div17 {
-        grid-area: 6 / 4 / 7 / 5;
-        color: black;
-        text-align: center;
-        font-weight: bold;
-      }
-      .div18 {
-        grid-area: 6 / 5 / 7 / 6;
-        color: black;
-        text-align: center;
-        font-weight: bold;
-      }
-      .div19 {
-        grid-area: 6 / 6 / 7 / 7;
-      }
-
-      .degrade {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 40%;
-        background: linear-gradient(
-          to top,
-          rgba(233, 30, 99, 0.7),
-          rgba(233, 30, 99, 0)
-        );
-        pointer-events: none;
-      }
-
-      .countdown {
-        position: absolute;
-        bottom: 22%;
-        width: 100%;
-        text-align: center;
-      }
-
-      .mensaje {
-        text-align: center;
-        color: black;
-        font-weight: bold;
-        padding: 5%;
-      }
-
-      /* ===== Contenedor del slider ===== */
-      .slider {
-        position: relative;
-        aspect-ratio: 4 / 3;
-        border-radius: 16px;
-        overflow: hidden;
-        background: #000;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-        margin: 3%;
-      }
-
-      .slider input[type="radio"],
-      .zoom-toggle {
-        display: none;
-      }
-
-      .slides {
-        width: 100%;
-        height: 100%;
-      }
-
-      .slide {
-        position: absolute;
-        inset: 0;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.5s ease;
-      }
-
-      #s1:checked ~ .slides #slide-1,
-      #s2:checked ~ .slides #slide-2,
-      #s3:checked ~ .slides #slide-3,
-      #s4:checked ~ .slides #slide-4,
-      #s5:checked ~ .slides #slide-5,
-      #s6:checked ~ .slides #slide-6,
-      #s7:checked ~ .slides #slide-7,
-      #s8:checked ~ .slides #slide-8,
-      #s9:checked ~ .slides #slide-9,
-      #s10:checked ~ .slides #slide-10,
-      #s11:checked ~ .slides #slide-11,
-      #s12:checked ~ .slides #slide-12 {
-        opacity: 1;
-        visibility: visible;
-      }
-
-      /* ===== Miniatura dentro del slide ===== */
-      .zoom-wrap {
-        width: 100%;
-        height: 100%;
-        display: block;
-        overflow: hidden;
-        cursor: zoom-in;
-      }
-
-      .zoom-wrap img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: top;
-        display: block;
-        transition: transform 0.4s ease;
-      }
-
-      .zoom-wrap:hover img {
-        transform: scale(1.05);
-      }
-
-      /* ===== Popup / lightbox estilo Google Fotos ===== */
-      .lightbox {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.92);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease;
-        z-index: 1000;
-      }
-
-      .zoom-toggle:checked ~ .lightbox {
-        opacity: 1;
-        visibility: visible;
-      }
-
-      .lightbox__backdrop {
-        position: absolute;
-        inset: 0;
-        cursor: zoom-out;
-      }
-
-      .lightbox__img {
-        position: relative;
-        max-width: 92vw;
-        max-height: 92vh;
-        object-fit: contain;
-        border-radius: 6px;
-        cursor: zoom-out;
-        box-shadow: 0 10px 60px rgba(0, 0, 0, 0.6);
-        transform: scale(0.92);
-        transition: transform 0.3s ease;
-      }
-
-      .zoom-toggle:checked ~ .lightbox .lightbox__img {
-        transform: scale(1);
-      }
-
-      .lightbox__close {
-        position: absolute;
-        top: 20px;
-        right: 28px;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.1);
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.4rem;
-        cursor: zoom-out;
-        z-index: 2;
-        transition: background 0.2s ease;
-      }
-
-      .lightbox__close:hover {
-        background: rgba(255, 255, 255, 0.2);
-      }
-
-      /* ===== Flechas prev/next del slider ===== */
-      .arrows {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 1rem;
-        pointer-events: none;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      #s1:checked ~ .slides #slide-1 .arrows,
-      #s2:checked ~ .slides #slide-2 .arrows,
-      #s3:checked ~ .slides #slide-3 .arrows,
-      #s4:checked ~ .slides #slide-4 .arrows,
-      #s5:checked ~ .slides #slide-5 .arrows,
-      #s6:checked ~ .slides #slide-6 .arrows,
-      #s7:checked ~ .slides #slide-7 .arrows,
-      #s8:checked ~ .slides #slide-8 .arrows,
-      #s9:checked ~ .slides #slide-9 .arrows,
-      #s10:checked ~ .slides #slide-10 .arrows,
-      #s11:checked ~ .slides #slide-11 .arrows,
-      #s12:checked ~ .slides #slide-12 .arrows {
-        opacity: 1;
-      }
-
-      .arrow {
-        pointer-events: auto;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: rgba(0, 0, 0, 0.5);
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.4rem;
-        cursor: pointer;
-        user-select: none;
-        transition: background 0.2s ease;
-      }
-
-      .arrow:hover {
-        background: rgba(0, 0, 0, 0.75);
-      }
-
-      /* ===== Puntos de navegación ===== */
-      .dots {
-        position: absolute;
-        bottom: 14px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 8px;
-        z-index: 2;
-      }
-
-      .dots label {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.4);
-        cursor: pointer;
-        transition: background 0.2s ease;
-      }
-
-      #s1:checked ~ .dots label[for="s1"],
-      #s2:checked ~ .dots label[for="s2"],
-      #s3:checked ~ .dots label[for="s3"],
-      #s4:checked ~ .dots label[for="s4"],
-      #s5:checked ~ .dots label[for="s5"],
-      #s6:checked ~ .dots label[for="s6"],
-      #s7:checked ~ .dots label[for="s7"],
-      #s8:checked ~ .dots label[for="s8"],
-      #s9:checked ~ .dots label[for="s9"],
-      #s10:checked ~ .dots label[for="s10"],
-      #s11:checked ~ .dots label[for="s11"],
-      #s12:checked ~ .dots label[for="s12"] {
-        background: #fff;
-      }
-
-      /* ===== Encabezado ===== */
-      .rsvp-title {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-weight: 700;
-        font-size: 1.6rem;
-        color: #1f2937;
-        margin: 6px 0 6px;
-        justify-content: center;
-      }
-
-      .rsvp-subtitle {
-        font-size: 1.15rem;
-        color: #6b7280;
-        margin: 0 0 28px;
-        text-align: center;
-      }
-
-      .rose-text {
-        font-family: "Alex Brush", cursive;
-        font-size: 11vw;
-        font-weight: 400;
-        position: relative;
-        letter-spacing: 2px;
-        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
-      }
-
-      /* Capa 1: el "cuerpo" metálico con bandas de luz repetidas (esto da el look metal) */
-      .rose-text .fill {
-        background: linear-gradient(
-          180deg,
-          #ffffff 0%,
-          #f9d9d9 8%,
-          #e8a5aa 18%,
-          #ffffff 28%,
-          #d67f85 38%,
-          #b85a60 48%,
-          #e8a5aa 58%,
-          #ffffff 66%,
-          #c96a6f 76%,
-          #a04a50 86%,
-          #d67f85 94%,
-          #f9d9d9 100%
-        );
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        color: transparent;
-        position: relative;
-        z-index: 2;
-        filter: drop-shadow(0 6px 6px rgba(120, 20, 30, 0.35));
-      }
-
-      /* Capa 2: el "grosor" del extrudido 3D, detrás, en tono bronce oscuro */
-      .rose-text .extrude {
-        position: absolute;
-        top: 0;
-        left: 0;
-        color: #9c4247;
-        z-index: 1;
-        text-shadow:
-          1px 1px 0 #9c4247,
-          2px 2px 0 #954048,
-          3px 3px 0 #8e3d47,
-          4px 4px 0 #873b46,
-          5px 5px 0 #803845,
-          6px 6px 0 #793644,
-          7px 7px 0 #723343,
-          8px 8px 10px rgba(60, 10, 15, 0.4);
-      }
-
-      .fec-hor {
-        color: black;
-        font-weight: bold;
-        text-align: center;
-        margin-bottom: 2%;
-      }
-
-      .invite-card__badge-img {
-        mix-blend-mode: multiply;
-        display: block;
-      }
-
-      .detalle-grid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        text-align: center;
-        padding-bottom: 5%;
-      }
-
-      .detalle-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 45%;
-      }
-
-      .detalle-item label {
-        color: black;
-        font-weight: bold;
-        margin-top: 5px;
-      }
-
-      @media only screen and (min-width: 390px) {
-        .wrapper {
-          grid-template-columns: 20% auto;
-          grid-template-areas: "header   header" "content  content";
-        }
-
-        .parent {
-          grid-column-gap: 15px;
-        }
-      }
-
-      @media only screen and (min-width: 600px) {
-        .wrapper {
-          grid-gap: 20px;
-          grid-template-columns: 120px auto;
-          grid-template-areas: "header  header" "content content" "footer  footer";
-        }
-
-        .div15 {
-          font-size: 15px;
-        }
-        .div16 {
-          grid-area: 6 / 3 / 7 / 4;
-          color: black;
-          text-align: center;
-        }
-        .div17 {
-          grid-area: 6 / 4 / 7 / 5;
-          color: black;
-          text-align: center;
-        }
-        .div18 {
-          grid-area: 6 / 5 / 7 / 6;
-          color: black;
-          text-align: center;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
 
   <body>
+    <audio id="bgAudio" src="images/videoplayback.mp3" loop></audio>
     <div class="wrapper">
       <div class="box header">
         <img src="images/mafe.jpg" class="img-head" alt="" />
@@ -963,38 +431,34 @@
             <div class="detalle-item">
               <img
                 src="images/tostada.gif"
-                width="100"
                 alt=""
                 class="invite-card__badge-img"
               />
-              <label>RECEPCION</label>
+              <span>Recepción</span>
             </div>
             <div class="detalle-item">
               <img
                 src="images/princesa.gif"
-                width="100"
                 alt=""
                 class="invite-card__badge-img"
               />
-              <label>ENTRADA DE LA QUINCIAÑERA</label>
+              <span>Entrada de la quinciañera</span>
             </div>
             <div class="detalle-item">
               <img
                 src="images/vals.gif"
-                width="100"
                 alt=""
                 class="invite-card__badge-img"
               />
-              <label>VALS</label>
+              <span>Vals</span>
             </div>
             <div class="detalle-item">
               <img
                 src="images/foto.gif"
-                width="100"
                 alt=""
                 class="invite-card__badge-img"
               />
-              <label>SESIÓN DE FOTOS Y CENA</label>
+              <span>Sesión de fotos y cena</span>
             </div>
           </div>
         </div>
@@ -1038,9 +502,107 @@
             <img src="images/FotografoQR.png" style="width: 50%" alt="" />
           </div>
         </div>
+        <!-- confirmacion -->
+        <div class="box">
+          <h1 class="rsvp-title">
+            <img src="images/correo-electronico.png" width="30" alt="" />
+            Confirmar Asistencia
+          </h1>
+          <p class="rsvp-subtitle" id="pSubtitle">
+            Por favor, háznos saber si podrás asistir
+          </p>
+
+          <p class="rsvp-subtitle" id="pConfirm" style="display: none">
+            Tu respuesta fue enviada. Gracias por tu confirmación.
+          </p>
+
+          <form id="sendConfirmation">
+            <div class="field">
+              <label for="nombre"
+                >Nombre de tu Familia<span class="required">*</span></label
+              >
+              <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                placeholder="Nombre de tu familia"
+                required
+              />
+            </div>
+
+            <div class="field">
+              <label for="telefono"
+                >Número de Contacto<span class="required">*</span></label
+              >
+              <input
+                type="tel"
+                id="telefono"
+                name="telefono"
+                placeholder="Número de Contacto"
+                required
+              />
+            </div>
+
+            <div class="field">
+              <label>¿Asistirás? <span class="required">*</span></label>
+              <div class="options">
+                <input type="radio" name="asistencia" id="si" checked />
+                <label for="si" class="option">
+                  <span class="option__icon">✓</span>
+                  <span class="option__text">Sí, asistiré</span>
+                </label>
+
+                <input type="radio" name="asistencia" id="no" />
+                <label for="no" class="option">
+                  <span class="option__icon">✕</span>
+                  <span class="option__text">No podré asistir</span>
+                </label>
+              </div>
+            </div>
+            <div style="margin: 0 4% 4% 4%">
+              <button type="submit" class="submit-btn">
+                <img
+                  src="images/enviar.png"
+                  width="20"
+                  class="icon_filter"
+                  alt=""
+                />
+                Confirmar Asistencia
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
 
+    <dialog id="mi-modal" class="invite-card">
+      <img
+        src="images/calendario.gif"
+        width="100"
+        alt=""
+        class="invite-card__badge-img"
+        style="margin: 0 auto"
+      />
+
+      <!-- <p class="invite-card__name">MARIA FERNANDA RESTREPO RUIZ</p> -->
+      <div class="rose-text">
+        <span class="extrude">Maria Fernanda Restrepo Ruiz</span>
+        <span class="fill">Maria Fernanda Restrepo Ruiz</span>
+      </div>
+      <h1 class="invite-card__title">XV AÑOS</h1>
+      <p class="invite-card__subtitle">Mis XV Años</p>
+
+      <button class="invite-card__btn" onclick="cerrarModal()">
+        <span>Ver Invitación</span>
+      </button>
+    </dialog>
+
     <script src="js/script.js" type="text/javascript"></script>
+
+    <script>
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+    </script>
   </body>
 </html>
