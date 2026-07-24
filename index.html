@@ -27,6 +27,14 @@
       })();
     </script>
 
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const dialog = document.querySelector("#mi-modal");
+        dialog.showModal();
+        document.body.classList.add("no-scroll");
+      });
+    </script>
+
     <link rel="stylesheet" href="css/style.css" />
   </head>
 
