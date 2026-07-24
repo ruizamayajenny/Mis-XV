@@ -79,13 +79,26 @@ window.onload = function() {
 // Función para cerrar el modal
 function cerrarModal() {
   const modal = document.getElementById("mi-modal");
-  modal.close();
 
-  const audio = document.getElementById("bgAudio");
-  audio.volume = 0.3; // por si no lo seteaste ya en otro lado
-  audio.play().catch((err) => {
-    console.log('No se pudo reproducir el audio:', err);
-  });
+  modal.classList.add("cerrando");
 
-  document.body.classList.remove('no-scroll');
+  modal.addEventListener(
+    "animationend",
+    () => {
+      modal.close();
+      modal.classList.remove("cerrando");
+
+      // quita el blur del fondo
+      document.body.classList.add("modal-closed");
+
+      const audio = document.getElementById("bgAudio");
+      audio.volume = 0.3;
+      audio.play().catch((err) => {
+        console.log("No se pudo reproducir el audio:", err);
+      });
+
+      document.body.classList.remove("no-scroll");
+    },
+    { once: true }
+  );
 }
