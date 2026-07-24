@@ -485,31 +485,34 @@ body.no-scroll {
 
 .detalle-grid {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px; /* antes 15px */
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 0 3% 3% 3%;
 }
 
 .detalle-item {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  gap: 15px;
-  text-align: left;
+  gap: 6px;
+  text-align: center;
+  flex: 1;
 }
 
 .detalle-item img {
-  width: 60px; /* controla el tamaño aquí en vez del atributo width del HTML */
+  width: 70px;
 }
 
 .detalle-item span {
   color: black;
   font-weight: bold;
-  font-size: 20px; /* controla el tamaño real del texto */
-  line-height: 1.2; /* reduce el alto de línea extra */
+  font-size: 15px;
+  line-height: 1.2;
   margin: 0;
 }
-
 /* ===== Campos ===== */
 .field {
   margin-bottom: 22px;
