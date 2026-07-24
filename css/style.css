@@ -5,6 +5,11 @@ body {
   font-style: normal;
 }
 
+body.modal-closed .wrapper {
+  filter: blur(0);
+  pointer-events: auto;
+}
+
 body.no-scroll {
   overflow: hidden;
 }
@@ -35,6 +40,9 @@ body.no-scroll {
   display: grid;
   grid-gap: 1em;
   grid-template-areas: "header" "content" "footer";
+  filter: blur(8px);
+  pointer-events: none;
+  transition: filter 0.4s ease;
 }
 
 .box {
@@ -673,6 +681,11 @@ body.no-scroll {
   overflow: hidden;
   box-shadow: 0 30px 60px rgba(122, 34, 71, 0.35);
   text-align: center;
+  animation: aparecer 0.5s ease;
+}
+
+.invite-card.cerrando {
+  animation: desaparecer 0.35s ease forwards;
 }
 
 /* Círculo decorativo esquina superior izquierda, cortado por el borde */
@@ -817,8 +830,36 @@ body.no-scroll {
   display: block;
 }
 
+/* Anima también el fondo oscuro */
 dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro transparente */
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: background-color 0.35s ease;
+}
+
+dialog.cerrando::backdrop {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes desaparecer {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.85) translateY(20px);
+  }
 }
 
 @media only screen and (min-width: 390px) {
